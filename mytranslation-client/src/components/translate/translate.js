@@ -12,7 +12,7 @@ export default class Translate extends React.Component {
       myTranslatedWords: []
     }
 
-    getText.getAllTranslatedText().then(result => {
+    getText().then(result => {
       this.setState({
         myTranslatedWords:result.data
       });
@@ -25,7 +25,7 @@ export default class Translate extends React.Component {
   
   translate(e) {
     e.persist();
-    translate.getTranslatedText(e.target.value).then((result) => {
+    translate(e.target.value).then((result) => {
       console.log(result.translatedText);
       let myTranslatedText = result.translatedText;
       let value = e.target.value;
@@ -37,7 +37,7 @@ export default class Translate extends React.Component {
   }
 
   handleTable() {
-    getText.getAllTranslatedText().then(result => {
+    getText().then(result => {
       this.setState({
         myTranslatedWords:result.data
       });
@@ -51,7 +51,7 @@ export default class Translate extends React.Component {
       "perse": this.state.myTranslatedText
     }
     e.persist();
-    saveText.saveTranslatedText(payload).then(() => {
+    saveText(payload).then(() => {
       this.handleTable();
     })
   }
